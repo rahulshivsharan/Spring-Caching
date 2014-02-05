@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="jQuery.js"></script>
+        <script type="text/javascript" src="handlebars-v1.3.0.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#clkBtn").click(function(){
+                    //alert("Hi !!!!!");
+                    var url = "mvc/customer/list?date="+new Date();
+                    $.get(url,function(data){ 
+                        //alert(data.length);
+                        var source = $("#optionSelect").html();
+                        var templte = Handlebars.compile(source);
+                        var obj = new Object();
+                        
+                        obj["customers"] = data;
+                        var html = templte(obj);
+                        $("div").html(html);
+                    });
+                });                
+            });
+        </script>
+    </head>
+    <body>
+        <input type="button" value="CLICK" id="clkBtn" /><br/><br/>
+        <div>TODO write content</div>
+        
+    </body>
+    <script id="optionSelect" type="text/x-handlebars-template">
+        <select>
+            {{#each customers}}
+                <option value="{{this.customerId}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </script>
+</html>
