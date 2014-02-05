@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+            updateCheck="false"
+            monitoring="autodetect"
+            dynamicConfig="true"
+            name="CM1" >
+            
+    <defaultCache   eternal="false" 
+                    overflowToDisk="false">
+    </defaultCache>
+    
+    <cache  eternal="false" 
+            name="cache_one"             
+            overflowToDisk="true"      
+            memoryStoreEvictionPolicy="LFU"           
+            statistics="true" timeToLiveSeconds="30" maxElementsInMemory="5">
+    </cache>    
+    
+</ehcache>
+
